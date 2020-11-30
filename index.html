@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>PreFam</title>
+  <meta charset="utf-8"/>
+  <script src="jspsych-6.1.0/jspsych.js"> </script>
+  <script src="jspsych-6.1.0/plugins/jspsych-audio-keyboard-response.js"></script>
+  <script src="jspsych-6.1.0/plugins/jspsych-html-keyboard-response.js"></script>
+  <script src="jspsych-6.1.0/plugins/jspsych-image-keyboard-response.js"></script>
+  <script src="jspsych-6.1.0/plugins/jspsych-free-sort.js"></script>
+  <script src="jspsych-6.1.0/plugins/jspsych-fullscreen.js"></script>
+  <script src="jspsych-6.1.0/plugins/jspsych-audio-button-response-flexiblelocations.js"></script>
+  <script src="jspsych-6.1.0/plugins/jspsych-survey-multi-select.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.2.0/papaparse.min.js"></script>
+  <link rel="stylesheet" href="jspsych-6.1.0/css/jspsych.css",type="text/css"> </link>
+  <link href="css/jspsych.css" rel="stylesheet" type="text/css"></link>
+  <style>
+  div.absolute {
+    position: absolute;
+    left: 10px;
+    right:0px;
+    top:10px;
+    border: 3px solid #73AD21;
+  }
+  </style>
+</head>
+<body>
+  <div id="PreFam"></div>
+</body>
+
+<script>
+
+
+// $('body,html').addClass('stop-scrolling');
+//$('body').bind('touchmove', function(e){e.preventDefault()})
+
+
+//Enter subject id
+var subject_id = jsPsych.data.getURLVariable('sub')
+var trial_order = jsPsych.data.getURLVariable('order')
+
+// choose csv file
+// if (trial_order == "1") {
+//   var trialURL = 'https://raw.githubusercontent.com/rpomper/PreFam/master/orders/PreFam-Order-1.csv';
+// } else if (trial_order == "2") {
+//   var publicSpreadsheetUrl = 'https://raw.githubusercontent.com/rpomper/PreFam/master/orders/PreFam-Order-2.csv';
+// }
+
+// Papa.parse(trialURL, {
+// 	          download: true,
+// 	          header: true,
+//             dynamicTyping: true,
+// 	          complete: function(results) {
+// 	            var data = results.data
+// 	            console.log(data)
+//               startExperiment(data);
+// 	          }
+// 	        })
+
+// function showInfo(data, tabletop) {
+//   alert('Successfully processed!')
+//   console.log(data);
+// }
+
+// window.addEventListener('DOMContentLoaded', init)
+
+document.body.style.backgroundColor = "black";
+document.body.style.backgroundSize = "100%";
+document.body.style.backgroundPosition = "top";
+document.body.style.backgroundRepeat = "no-repeat";
+
+
+var timeline = []
+
+// function createTrials(data, phono, visuo, tabletop) {
+
+function createTrials() {
+
+  var welcome = {
+    type: "fullscreen",
+    // fullscreen_mode: false,
+    message: "<br><br><br><p>Subject: "+subject_id.toString()+"</p><p>Order: "+trial_order.toString()+"</p><br>",
+    button_label: "Click Here",
+    delay_after: 250
+  }
+
+  // timeline.push(welcome);
+
+  var wait_to_start = {
+    type: "html-keyboard-response",
+    // fullscreen_mode: false,
+    choices:['space'],
+    stimulus: "<br><br><br><br><br><br><br><br><p style='font-size:30px;'> When you are ready, press the space bar to begin.</br> </p>"
+  }
+
+  timeline.push(wait_to_start);
+
+  // var expLength = data.length;
+  var audioExt="stimuli/sounds/"
+  var imageStart='<img src= "stimuli/images/'
+  var imageStop= '.jpg"  title = "" width="300" height="300">'
+
+
+  var multi_select_block = {
+    type: 'survey-multi-select',
+    questions: [
+      {
+        prompt: "Which of these colors do you like?",
+        options: ["Red", "Yellow", "Green", "Blue", "Black"],
+        horizontal: true,
+        required: true,
+        name: 'Colors'
+      },
+      {
+        prompt: "Which of these foods do you like?",
+        options: ["Apples", "Bananas", "Carrots", "Donuts", "Eggplant"],
+        horizontal: true,
+        required: true,
+        name: 'Foods'
+      }
+    ],
+    randomize_question_order: true
+  }
+
+  timeline.push(multi_select_block);
+
+  var fullscreen_exit = {
+    type: 'fullscreen',
+    fullscreen_mode: false
+  }
+  timeline.push(fullscreen_exit)
+};
+
+
+var imageExt = 'stimuli/images/'
+
+var images = [imageExt+'B1.jpg',
+imageExt+'C1.jpg',
+imageExt+'D1.jpg',
+imageExt+'H1.jpg',
+imageExt+'J1.jpg',
+imageExt+'A1.jpg',
+imageExt+'E1.jpg',
+imageExt+'I1.jpg',
+imageExt+'K1.jpg',
+imageExt+'L1.jpg',
+imageExt+'B2.jpg',
+imageExt+'C2.jpg',
+imageExt+'D2.jpg',
+imageExt+'E2.jpg',
+imageExt+'F2.jpg',
+imageExt+'G2.jpg',
+imageExt+'H2.jpg',
+imageExt+'I2.jpg',
+imageExt+'J2.jpg',
+imageExt+'K2.jpg',
+imageExt+'A3.jpg',
+imageExt+'B3.jpg',
+imageExt+'D3.jpg',
+imageExt+'E3.jpg',
+imageExt+'F3.jpg',
+imageExt+'G3.jpg',
+imageExt+'I3.jpg',
+imageExt+'J3.jpg',
+imageExt+'K3.jpg',
+imageExt+'L3.jpg',
+imageExt+'jupiter.jpg',
+imageExt+'mars.jpg',
+imageExt+'mercury.jpg',
+imageExt+'neptune.jpg',
+imageExt+'saturn.jpg',
+imageExt+'venus.jpg',
+imageExt+'black.jpg',
+imageExt+'black-background.jpg',
+imageExt+'launch-pad-background.jpg',
+imageExt+'launch-pad-ship-background.jpg',
+imageExt+'spaceship-1.jpg',
+imageExt+'spaceship-2.jpg',
+imageExt+'spaceship-3.jpg',
+imageExt+'numpad-1.jpg',
+imageExt+'numpad-2.jpg',
+imageExt+'numpad-3.jpg',
+imageExt+'numpad-4.jpg',
+imageExt+'numpad-5.jpg',
+imageExt+'numpad-6.jpg',
+imageExt+'numpad-keys.jpg',
+imageExt+'dot.jpg']
+
+
+function startExperiment(data, phono, visuo, tabletop) {
+	// createTrials(data,tabletop);
+  createTrials(data,phono,visuo);
+jsPsych.init({
+  timeline: timeline,
+  // preload_audio:audio,
+  preload_images:images,
+  default_iti:0,
+  on_finish: function() {
+    //jsPsych.data.displayData();
+    // save_data('yumME','V1',subject_id, jsPsych.data.dataAsCSV());
+  }
+});
+};
+
+// function save_data(experiment, version,identifier, data){
+// 	$.ajax({
+// 		type: 'post',
+// 		cache: false,
+// 		url: 'https://data.infantlearning.waisman.wisc.edu/infantdb/datastore/save/',
+// 		data: {
+// 			experiment: experiment,
+// 	version: version,
+// 			identifier: identifier,
+// 			data: data
+// 		}
+// 	})
+// };
+
+
+</script>
+
+</html>
