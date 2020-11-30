@@ -95,10 +95,33 @@ function createTrials(data) {
 
   timeline.push(wait_to_start);
 
-  // var expLength = data.length;
+  var expLength = data.length;
   var audioExt="stimuli/sounds/"
   var imageStart='<img src= "stimuli/images/'
   var imageStop= '.jpg"  title = "" width="200" height="100">'
+
+  for (var i = 0; i < expLength; i++) {
+
+    var show_stim = {
+      type: 'audio-button-response-flexiblelocations',
+      trial_duration: data[i]['duration'],
+      response_ends_trial: true,
+      margin_top: ['300px','300px','300px'],
+      margin_bottom: ['0px','0px','0px'],
+      margin_left: ['0px','200px','200px'],
+      margin_right: ['0px','0px','0px'],
+      stimulus: null,
+      choices: [imageStart+data[i]['left_image']+imageStop, imageStart+data[i]['center_image']+imageStop, imageStart+data[i]['right_image']+imageStop],
+      set_background:data[i]['background'],
+      data:{condition:data[i]['condition'],target_side:data[i]['target_side'],correct_response:data[i]['correct_response'],background:data[i]['background']},
+      on_finish: function(data) {
+        data.correct = data.button_pressed == data.correct_response;
+      }
+    }
+
+    timeline.push(show_stim)
+
+  }
 
 
   var rectangles = [imageStart+'rectangle'+imageStop, imageStart+'rectangle'+imageStop,imageStart+'rectangle'+imageStop];
