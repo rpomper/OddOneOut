@@ -11,7 +11,6 @@
   <script src="jspsych-6.1.0/plugins/jspsych-free-sort.js"></script>
   <script src="jspsych-6.1.0/plugins/jspsych-fullscreen.js"></script>
   <script src="jspsych-6.1.0/plugins/jspsych-audio-button-response-flexiblelocations.js"></script>
-  <script src="jspsych-6.1.0/plugins/jspsych-survey-multi-select.js"></script>
   <script src="jspsych-6.1.0/plugins/jspsych-survey-multi-choice.js"></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.2.0/papaparse.min.js"></script>
@@ -102,42 +101,8 @@ function createTrials(data) {
   var imageStop= '.jpg"  title = "" width="300" height="300">'
 
 
-  var multi_select_block = {
-    type: 'survey-multi-select',
-    questions: [
-      {
-        prompt: "Which of these colors do you like?",
-        options: ["Red", "Yellow", "Green", "Blue", "Black"],
-        horizontal: true,
-        required: true,
-        name: 'Colors'
-      },
-      {
-        prompt: "Which of these foods do you like?",
-        options: ["Apples", "Bananas", "Carrots", "Donuts", "Eggplant"],
-        horizontal: true,
-        required: true,
-        name: 'Foods'
-      }
-    ],
-    randomize_question_order: true
-  }
-
-  timeline.push(multi_select_block);
-
-
   var page_1_options = ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"];
   var page_2_options = ["Strongly Disagree", "Disagree", "Somewhat Disagree", "Neural", "Somewhat Agree", "Agree", "Strongly Agree"];
-
-  var multi_choice_block = {
-    type: 'survey-multi-choice',
-    questions: [
-      {prompt: "I like vegetables", name: 'Vegetables', options: page_1_options, required:true},
-      {prompt: "I like fruit", name: 'Fruit', options: page_2_options, required: false}
-    ],
-  };
-
-  timeline.push(multi_choice_block)
 
   var multi_choice_block_horizontal = {
     type: 'survey-multi-choice',
@@ -159,7 +124,7 @@ function createTrials(data) {
 
 var imageExt = 'stimuli/images/'
 
-// var images = [imageExt+'B1.jpg',
+var images = [imageExt+'rectangle.jpg']
 // imageExt+'C1.jpg',
 // imageExt+'D1.jpg',
 // imageExt+'H1.jpg',
@@ -217,7 +182,7 @@ function startExperiment(data) {
 jsPsych.init({
   timeline: timeline,
   // preload_audio:audio,
-  // preload_images:images,
+  preload_images:images,
   default_iti:0,
   on_finish: function() {
     //jsPsych.data.displayData();
