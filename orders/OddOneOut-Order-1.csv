@@ -1,11 +1,3 @@
-block,condition,tr_num,left_image1,right_image1,left_image2,right_image2,audio1,audio2,audio1_dur,audio2_dur,target_side,correct_response,background
-1,phono,1,venus,neptune,B1,neptune,bem-phono,there-he,7000,5000,L,0,black-background
-1,phono,2,jupiter,mars,jupiter,C1,manu-phono,there-she,7000,5000,R,1,black-background
-1,phono,3,mercury,saturn,mercury,D1,sibu-phono,there-he,7000,5000,R,1,black-background
-1,phono,4,mars,jupiter,H1,jupiter,toma-phono,there-she,7000,5000,L,0,black-background
-1,phono,5,saturn,mercury,J1,mercury,heab-phono,there-he,7000,5000,L,0,black-background
-2,visuo,8,B1,neptune,venus,neptune,new-friend-him,bem-vis,5000,7000,L,0,black-background
-2,visuo,9,jupiter,C1,jupiter,mars,next-friend-her,manu-vis,5000,7000,R,1,black-background
-2,visuo,10,mercury,D1,mercury,saturn,another-friend-him,sibu-vis,5000,7000,R,1,black-background
-2,visuo,11,H1,jupiter,mars,jupiter,one-friend-her,toma-vis,5000,7000,L,0,black-background
-2,visuo,12,J1,mercury,saturn,mercury,last-friend-him,heab-vis,5000,7000,L,0,black-background
+block,condition,tr_num,left_image,center_image,right_image,duration,target_side,correct_response,background
+1,2,1,octogon,hexagon,hexagon,5000,L,0,white-background
+1,2,2,bracket curl,bracket point,bracket point,5000,L,0,white-background
