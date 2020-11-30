@@ -43,21 +43,21 @@ var trial_order = jsPsych.data.getURLVariable('order')
 
 choose csv file
 if (trial_order == "1") {
-  var trialURL = 'https://raw.githubusercontent.com/rpomper/PreFam/master/orders/PreFam-Order-1.csv';
+  var trialURL = 'https://raw.githubusercontent.com/rpomper/OddOneOut/main/orders/OddOneOut-Order-1.csv';
 } else if (trial_order == "2") {
   var publicSpreadsheetUrl = 'https://raw.githubusercontent.com/rpomper/PreFam/master/orders/PreFam-Order-2.csv';
 }
 
-// Papa.parse(trialURL, {
-// 	          download: true,
-// 	          header: true,
-//             dynamicTyping: true,
-// 	          complete: function(results) {
-// 	            var data = results.data
-// 	            console.log(data)
-//               startExperiment(data);
-// 	          }
-// 	        })
+Papa.parse(trialURL, {
+	          download: true,
+	          header: true,
+            dynamicTyping: true,
+	          complete: function(results) {
+	            var data = results.data
+	            console.log(data)
+              startExperiment(data);
+	          }
+	        })
 
 // function showInfo(data, tabletop) {
 //   alert('Successfully processed!')
@@ -65,8 +65,6 @@ if (trial_order == "1") {
 // }
 
 // window.addEventListener('DOMContentLoaded', init)
-
-startExperiment()
 
 document.body.style.backgroundColor = "black";
 document.body.style.backgroundSize = "100%";
@@ -76,9 +74,7 @@ document.body.style.backgroundRepeat = "no-repeat";
 
 var timeline = []
 
-// function createTrials(data, phono, visuo, tabletop) {
-
-function createTrials() {
+function createTrials(data) {
 
   var welcome = {
     type: "fullscreen",
@@ -191,8 +187,8 @@ var imageExt = 'stimuli/images/'
 // imageExt+'dot.jpg']
 
 
-function startExperiment() {
-  createTrials();
+function startExperiment(data) {
+  createTrials(data);
 jsPsych.init({
   timeline: timeline,
   // preload_audio:audio,
