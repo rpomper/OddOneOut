@@ -1,3 +1,3 @@
 block,condition,tr_num,left_image,center_image,right_image,duration,target_side,correct_response,background
-1,2,1,octogon,hexagon,hexagon,5000,L,0,white-background
-1,2,2,bracket curl,bracket point,bracket point,5000,L,0,white-background
+1,2,1,octogon,hexagon,hexagon,5000,L,0,black-background
+1,2,2,bracket curl,bracket point,bracket point,5000,L,0,black-background
