@@ -96,7 +96,7 @@ jsPsych.plugins['survey-multi-choice'] = (function() {
 
     // form element
     html += '<form id="jspsych-survey-multi-choice-form">';
-    
+
     // generate question order. this is randomized here as opposed to randomizing the order of trial.questions
     // so that the data are always associated with the same question regardless of order
     var question_order = [];
@@ -106,14 +106,14 @@ jsPsych.plugins['survey-multi-choice'] = (function() {
     if(trial.randomize_question_order){
       question_order = jsPsych.randomization.shuffle(question_order);
     }
-    
+
     // add multiple-choice questions
     for (var i = 0; i < trial.questions.length; i++) {
-      
+
       // get question based on question_order
       var question = trial.questions[question_order[i]];
       var question_id = question_order[i];
-      
+
       // create question container
       var question_classes = ['jspsych-survey-multi-choice-question'];
       if (question.horizontal) {
@@ -123,7 +123,7 @@ jsPsych.plugins['survey-multi-choice'] = (function() {
       html += '<div id="jspsych-survey-multi-choice-'+question_id+'" class="'+question_classes.join(' ')+'"  data-name="'+question.name+'">';
 
       // add question text
-      html += '<p class="jspsych-survey-multi-choice-text survey-multi-choice">' + question.prompt 
+      html += '<p class="jspsych-survey-multi-choice-text survey-multi-choice">' + question.prompt
       if(question.required){
         html += "<span class='required'>*</span>";
       }
@@ -147,9 +147,15 @@ jsPsych.plugins['survey-multi-choice'] = (function() {
 
       html += '</div>';
     }
-    
+
     // add submit button
-    html += '<input type="submit" id="'+plugin_id_name+'-next" class="'+plugin_id_name+' jspsych-btn"' + (trial.button_label ? ' value="'+trial.button_label + '"': '') + '></input>';
+    // html += '<input type="submit" id="'+plugin_id_name+'-next" class="'+plugin_id_name+' jspsych-btn"' + (trial.button_label ? ' value="'+trial.button_label + '"': '') + '></input>';
+
+    // ron add submit button
+    html += "<button id='jspsych-instructions-next' class='jspsych-btn'"+
+        "style='margin-left: 5px;'>"+trial.button_label+
+        " &gt;</button></div>";
+
     html += '</form>';
 
     // render
