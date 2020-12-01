@@ -152,9 +152,9 @@ jsPsych.plugins['survey-multi-choice'] = (function() {
     // html += '<input type="submit" id="'+plugin_id_name+'-next" class="'+plugin_id_name+' jspsych-btn"' + (trial.button_label ? ' value="'+trial.button_label + '"': '') + '></input>';
 
     // ron add submit button
-    html += "<button id='jspsych-survey-multi-choice' class='jspsych-btn'"+
+    html += "<button id='jspsych-survey-multi-choice-btn' class='jspsych-btn'"+
         "style='margin-left: 5px;'>"+trial.button_label+
-        " &gt;</button>";
+        "</button>";
 
     // html += '</form>';
 
