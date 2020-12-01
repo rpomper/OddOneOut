@@ -154,7 +154,7 @@ jsPsych.plugins['survey-multi-choice'] = (function() {
     // ron add submit button
     html += "<button id='jspsych-survey-multi-choice' class='jspsych-btn'"+
         "style='margin-left: 5px;'>"+trial.button_label+
-        " &gt;</button></div>";
+        " &gt;</button>";
 
     // html += '</form>';
 
