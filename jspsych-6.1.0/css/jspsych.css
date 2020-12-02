@@ -59,7 +59,7 @@
 .jspsych-btn {
   display: inline-block;
   /* padding: 6px 12px; */
-  padding: 0px; 
+  padding: 0px;
   margin: 0px;
   font-size: 14px;
   font-weight: 400;
@@ -125,4 +125,11 @@
 /* Control appearance of jsPsych.data.displayData() */
 #jspsych-data-display {
   text-align: left;
+}
+
+/* Ron & Martin change the default background to black */
+body {
+  background-image: url('stimuli/images/white-background.jpg');
+  color: black;
+  margin: 0
 }
