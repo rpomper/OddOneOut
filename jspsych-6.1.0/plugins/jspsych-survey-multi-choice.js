@@ -34,6 +34,14 @@ jsPsych.plugins['survey-multi-choice'] = (function() {
             default: undefined,
             description: 'Displays options for an individual question.'
           },
+          // Ron
+          labels: {
+            type: jsPsych.plugins.parameterType.STRING,
+            pretty_name: 'Labels',
+            default: undefined,
+            description: 'Labels for the options'
+          },
+
           required: {
             type: jsPsych.plugins.parameterType.BOOL,
             pretty_name: 'Required',
@@ -114,6 +122,7 @@ jsPsych.plugins['survey-multi-choice'] = (function() {
       var question = trial.questions[question_order[i]];
       var question_id = question_order[i];
 
+
       // create question container
       var question_classes = ['jspsych-survey-multi-choice-question'];
       if (question.horizontal) {
@@ -141,7 +150,8 @@ jsPsych.plugins['survey-multi-choice'] = (function() {
         // add radio button container
         html += '<div id="'+option_id_name+'" class="jspsych-survey-multi-choice-option">';
         html += '<label class="jspsych-survey-multi-choice-text" for="'+input_id+'">'+question.options[j]+'</label>';
-        html += '<input type="radio" name="'+input_name+'" id="'+input_id+'" value="'+question.options[j]+'" '+required_attr+'></input>';
+        // html += '<input type="radio" name="'+input_name+'" id="'+input_id+'" value="'+question.options[j]+'" '+required_attr+'></input>';
+        html += '<input type="radio" name="'+input_name+'" id="'+input_id+'" value="'+question.labels[j]+'" '+required_attr+'></input>'; //ron
         html += '</div>';
       }
 

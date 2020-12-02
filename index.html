@@ -124,16 +124,19 @@ function createTrials(data) {
   }
 
   var rectangles = ['<img src= "stimuli/images/rectangle.jpg" width="100" height="100">', imageStart+'rectangle'+imageStop,imageStart+'rectangle'+imageStop];
+  var images1 = ['octogon','hexagon','hexagon']
+  var images2 = ['bracket curl','bracket point', 'bracket point']
 
   var multi_choice_block_horizontal = {
     type: 'survey-multi-choice',
     questions: [
-      {prompt: " ", options: rectangles, required: false, horizontal: true,},
-      {prompt: " ", options: rectangles, required: false, horizontal: true}
+      {prompt: " ", options: rectangles, labels: images1, required: false, horizontal: true,},
+      {prompt: " ", options: rectangles, labels: images2, required: false, horizontal: true}
     ],
     // button_label:"<p style='font-size:30px;color:black'> Next </p>"
     // button_label:"<style='font-size:50px;color:red'> Next"
-    button_label: "Continue"
+    randomize_question_order: false,
+    button_label: "Next"
   };
 
 // "<p style='font-size:30px;'> When you are ready, press the space bar to begin.</br> </p>"
