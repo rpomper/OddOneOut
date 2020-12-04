@@ -10,8 +10,7 @@
 /* Ron & Martin change the default background to black */
   body {
     background-image: url('white-background.jpg');
-    color: black;
-    margin: 0
+    color: black
   }
 
 
