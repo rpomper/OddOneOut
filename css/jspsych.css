@@ -7,13 +7,6 @@
 
  @import url(https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700);
 
-/* Ron & Martin change the default background to black */
-  body {
-    background-image: url('white-background.jpg');
-    color: black
-  }
-
-
 /* Container holding jsPsych content */
 
  .jspsych-display-element {
@@ -36,8 +29,8 @@
  .jspsych-content {
    max-width: 95%; /* this is mainly an IE 10-11 fix */
    text-align: center;
-   /* margin: auto; /* this is for overflowing content */
-   margin-top: 10px;
+   margin: auto; /* this is for overflowing content */
+   /* margin-top: 10px; */
  }
 
  .jspsych-top {
@@ -54,7 +47,7 @@
   font-family: 'Open Sans', 'Arial', sans-serif;
   font-size: 18px;
   line-height: 1.6em;
-  color: #FAFAFA
+  /* color: #FAFAFA */
 }
 
 /* Form elements like input fields and buttons */
@@ -137,3 +130,10 @@
 #jspsych-data-display {
   text-align: left;
 }
+
+
+/* Ron & Martin change the default background to black */
+  body {
+    background-image: url('white-background.jpg');
+    color: black
+  }
