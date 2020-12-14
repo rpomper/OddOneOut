@@ -99,73 +99,50 @@ function createTrials(data) {
   var expLength = data.length;
   var audioExt="stimuli/sounds/"
   var imageStart='<img src= "stimuli/images/'
-  var imageStop= '.jpg"  title = "" width="90" height="100">'
+  var imageStop= '.jpg"  title = "" width="100" height="100">'
 
   for (var i = 0; i < expLength; i++) {
 
-    if(data[i]['tr_type']=='image') {
-
-      var show_stim = {
-        type: 'audio-button-response-flexiblelocations',
-        trial_duration: null,
-        response_ends_trial: true,
-        margin_top: ['300px','300px','300px'],
-        margin_bottom: ['0px','0px','0px'],
-        margin_left: ['0px','200px','200px'],
-        margin_right: ['0px','0px','0px'],
-        stimulus: null,
-        choices: [imageStart+data[i]['left_image']+imageStop, imageStart+data[i]['center_image']+imageStop, imageStart+data[i]['right_image']+imageStop],
-        set_background:data[i]['background'],
-        data:{condition:data[i]['condition'],target_side:data[i]['target_side'],correct_response:data[i]['correct_response'],background:data[i]['background']},
-        on_finish: function(data) {
-          data.correct = data.button_pressed == data.correct_response;
-        }
+    var show_stim = {
+      type: 'audio-button-response-flexiblelocations',
+      trial_duration: null,
+      response_ends_trial: true,
+      margin_top: ['300px','300px','300px'],
+      margin_bottom: ['0px','0px','0px'],
+      margin_left: ['0px','200px','200px'],
+      margin_right: ['0px','0px','0px'],
+      stimulus: null,
+      choices: [imageStart+data[i]['left_image']+imageStop, imageStart+data[i]['center_image']+imageStop, imageStart+data[i]['right_image']+imageStop],
+      set_background:data[i]['background'],
+      data:{condition:data[i]['condition'],target_side:data[i]['target_side'],correct_response:data[i]['correct_response'],background:data[i]['background']},
+      on_finish: function(data) {
+        data.correct = data.button_pressed == data.correct_response;
       }
-
-      timeline.push(show_stim)
-
     }
 
-    if(data[i]['tr_type'=='rect']) {
-
-      var rectangles = ['<img src= "stimuli/images/rectangle.jpg" width="90" height="100">', imageStart+'rectangle'+imageStop,imageStart+'rectangle'+imageStop];
-
-      qs = []
-
-      for (var i = 0; i < data[i]['length']; i++) {
-
-        qs.push(
-          {prompt: " ", options: rectangles, labels: data[i]['images'+i.toString()], require: false, horizontal: true}
-        )
-
-      }
-
-      console.log(qs)
-
-      var multi_choice_block_horizontal = {
-        type: 'survey-multi-choice',
-        // questions: [
-        //   {prompt: " ", options: rectangles, labels: images1, required: false, horizontal: true,},
-        //   {prompt: " ", options: rectangles, labels: images2, required: false, horizontal: true}
-        // ],
-        questions: qs,
-        // button_label:"<p style='font-size:30px;color:black'> Next </p>"
-        // button_label:"<style='font-size:50px;color:red'> Next"
-        randomize_question_order: false,
-        button_label: "Next"
-      };
-
-      timeline.push(multi_choice_block_horizontal)
-
-
-    }
+    timeline.push(show_stim)
 
   }
 
+  var rectangles = ['<img src= "stimuli/images/rectangle.jpg" width="100" height="100">', imageStart+'rectangle'+imageStop,imageStart+'rectangle'+imageStop];
+  var images1 = ['0-octogon','1-hexagon','2-hexagon']
+  var images2 = ['0-bracket curl','1-bracket point', '2-bracket point']
 
+  var multi_choice_block_horizontal = {
+    type: 'survey-multi-choice',
+    questions: [
+      {prompt: " ", options: rectangles, labels: images1, required: false, horizontal: true,},
+      {prompt: " ", options: rectangles, labels: images2, required: false, horizontal: true}
+    ],
+    // button_label:"<p style='font-size:30px;color:black'> Next </p>"
+    // button_label:"<style='font-size:50px;color:red'> Next"
+    randomize_question_order: false,
+    button_label: "Next"
+  };
 
 // "<p style='font-size:30px;'> When you are ready, press the space bar to begin.</br> </p>"
 
+  timeline.push(multi_choice_block_horizontal)
 
   var fullscreen_exit = {
     type: 'fullscreen',
