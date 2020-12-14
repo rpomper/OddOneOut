@@ -132,10 +132,12 @@ function createTrials(data) {
 
       qs = []
 
-      for (var i = 0; i < data[i]['length']; i++) {
+      for (var j = 0; j < data[i]['length']; j++) {
+
+        console.log(j.toString())
 
         qs.push(
-          {prompt: " ", options: rectangles, labels: data[i]['images'+i.toString()], require: false, horizontal: true}
+          {prompt: " ", options: rectangles, labels: data[i]['images'+j.toString()], require: false, horizontal: true}
         )
 
       }
