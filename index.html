@@ -125,7 +125,7 @@ function createTrials(data) {
         type: 'audio-button-response-flexiblelocations',
         trial_duration: null,
         response_ends_trial: true,
-        margin_top: ['300px','300px','300px'],
+        margin_top: ['100px','100px','100px'],
         margin_bottom: ['0px','0px','0px'],
         margin_left: ['0px','200px','200px'],
         margin_right: ['0px','0px','0px'],
@@ -144,18 +144,15 @@ function createTrials(data) {
 
     if(data[i]['tr_type']=='rect') {
 
-      console.log(data[i]["total_num"])
+      // console.log(data[i]["total_num"])
 
       var rectangles = ['<img src= "stimuli/images/rectangle.jpg" width="90" height="100">', imageStart+'rectangle'+imageStop,imageStart+'rectangle'+imageStop];
-
       qs = []
 
       for (var j = 1; j <= data[i]['length']; j++) {
-
         qs.push(
           {prompt: " ", options: rectangles, labels: data[i]['images'+j.toString()].split(","), require: false, horizontal: true}
         )
-
       }
 
       console.log(qs)
@@ -167,9 +164,8 @@ function createTrials(data) {
         //   {prompt: " ", options: rectangles, labels: images2, required: false, horizontal: true}
         // ],
         questions: qs,
-        // button_label:"<p style='font-size:30px;color:black'> Next </p>"
-        // button_label:"<style='font-size:50px;color:red'> Next"
         randomize_question_order: false,
+        margin_left:['0px','200px','200px'],
         button_label: "Next"
       };
 

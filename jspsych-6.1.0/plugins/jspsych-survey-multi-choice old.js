@@ -79,13 +79,6 @@ jsPsych.plugins['survey-multi-choice'] = (function() {
         pretty_name: 'Button label',
         default:  'Continue',
         description: 'Label of the button.'
-      },
-      // ron
-      margin_left: {
-        type: jsPsych.plugins.parameterType.STRING,
-        pretty_name: 'Margin left',
-        default: '8px',
-        description: 'Left margin of button.'
       }
     }
   }
@@ -136,12 +129,7 @@ jsPsych.plugins['survey-multi-choice'] = (function() {
         question_classes.push('jspsych-survey-multi-choice-horizontal');
       }
 
-
-      // html += '<div id="jspsych-survey-multi-choice-'+question_id+'" class="'+question_classes.join(' ')+'"  data-name="'+question.name+'">';
-      // ron
-      html += '<div id="jspsych-survey-multi-choice-'+question_id+'" class="'+question_classes.join(' ')+'" style="margin-left:'+trial.margin_left[i]+'"  data-name="'+question.name+'">';
-
-
+      html += '<div id="jspsych-survey-multi-choice-'+question_id+'" class="'+question_classes.join(' ')+'"  data-name="'+question.name+'">';
 
       // add question text
       html += '<p class="jspsych-survey-multi-choice-text survey-multi-choice">' + question.prompt
