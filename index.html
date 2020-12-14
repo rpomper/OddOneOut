@@ -103,6 +103,22 @@ function createTrials(data) {
 
   for (var i = 0; i < expLength; i++) {
 
+    if(data[i]['tr_type']=='instruct') {
+
+      var display_instructions = {
+        type: "html-keyboard-response",
+        // fullscreen_mode: false,
+        choices:['space'],
+        set_background: 'white-background',
+        stimulus: data[i]['text']
+      }
+
+      timeline.push(display_instructions)
+
+    }
+
+
+
     if(data[i]['tr_type']=='image') {
 
       var show_stim = {

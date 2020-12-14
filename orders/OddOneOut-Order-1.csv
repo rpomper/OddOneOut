@@ -1,11 +1,12 @@
-total_num,condition,tr_num,tr_type,left_image,center_image,right_image,duration,target_side,correct_response,background,length,images1,images2,images3,images4,images5,images6
-1,1,1,image,1-1-foil,1-1-target,1-1-foil,5000,C,1,white-background,,,,,,,
-2,1,1,rect,,,,,,,white-background,1,"foil,target,foil",NA,NA,NA,NA,NA
-3,1,2,image,1-2-target,1-1-foil,1-1-foil,5000,L,0,white-background,,,,,,,
-4,1,2,rect,,,,,,,white-background,1,"target,foil,foil",NA,NA,NA,NA,NA
-5,2,1,image,2-1-target,2-1-foil,2-1-foil,,L,0,white-background,,,,,,,
-6,2,2,image,2-2-target,2-2-foil,2-2-foil,,L,0,white-background,,,,,,,
-7,2,1,rect,,,,,,,white-background,2,"target,foil,foil","target,foil,foil",NA,NA,NA,NA
-8,2,3,image,2-3-foil,2-3-foil,2-3-target,,R,2,white-background,,,,,,,
-9,2,4,image,2-4-foil,2-4-target,2-4-foil,,C,1,white-background,,,,,,,
-10,2,2,rect,,,,,,,white-background,2,"foil,foil,target","foil,target,foil",NA,NA,NA,NA
+total_num,condition,tr_num,tr_type,left_image,center_image,right_image,duration,target_side,correct_response,background,length,images1,images2,images3,images4,images5,images6,text
+1,1,1,instruct,,,,,,,,,,,,,,,"<br><br><p style='font-size:30px;'> We will now start the real test. The instructions will remind you what to do, and the tester will prompt you if you forget.<br><br>On the next page you will see three shapes<br>Decide which shape is the odd-one-out and click on it<br>When requested, click on where the odd-one-out appeared in the box<br><br><br>Press <i>Space</i> to begin</p>"
+2,1,1,image,1-1-foil,1-1-target,1-1-foil,5000,C,1,white-background,,,,,,,,
+3,1,1,rect,,,,,,,white-background,1,"foil,target,foil",NA,NA,NA,NA,NA,
+4,1,2,image,1-2-target,1-1-foil,1-1-foil,5000,L,0,white-background,,,,,,,,
+5,1,2,rect,,,,,,,white-background,1,"target,foil,foil",NA,NA,NA,NA,NA,
+6,2,1,image,2-1-target,2-1-foil,2-1-foil,,L,0,white-background,,,,,,,,
+7,2,2,image,2-2-target,2-2-foil,2-2-foil,,L,0,white-background,,,,,,,,
+8,2,1,rect,,,,,,,white-background,2,"target,foil,foil","target,foil,foil",NA,NA,NA,NA,
+9,2,3,image,2-3-foil,2-3-foil,2-3-target,,R,2,white-background,,,,,,,,
+10,2,4,image,2-4-foil,2-4-target,2-4-foil,,C,1,white-background,,,,,,,,
+11,2,2,rect,,,,,,,white-background,2,"foil,foil,target","foil,target,foil",NA,NA,NA,NA,
