@@ -71,15 +71,16 @@
   white-space: nowrap;
   vertical-align: middle;
   background-image: none;
-  /* border: 0 px none transparent; */
-  border: 5 px white;
+  /* border: 5 px white;
   border-radius: 4px;
   color: black;
-  /* background-color: none;
-  border-color: white; */
   background-color: transparent;
-  border-color: transparent;
-
+  border-color: transparent; */
+  border: 0px none transparent;
+  border-radius: 0px;
+  color: #333;
+  background-color: #000;
+  border-color: #000;
 }
 
 .jspsych-btn:hover {
