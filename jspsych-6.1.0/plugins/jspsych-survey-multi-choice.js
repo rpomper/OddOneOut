@@ -151,7 +151,7 @@ jsPsych.plugins['survey-multi-choice'] = (function() {
         html += '<div id="'+option_id_name+'" class="jspsych-survey-multi-choice-option">';
         html += '<label class="jspsych-survey-multi-choice-text" for="'+input_id+'">'+question.options[j]+'</label>';
         // html += '<input type="radio" name="'+input_name+'" id="'+input_id+'" value="'+question.options[j]+'" '+required_attr+'></input>';
-        html += '<input type="radio" name="'+input_name+'" id="'+input_id+'" value="'+question.labels[j]+'" '+required_attr+'></input>'; //ron
+        html += '<input type="radio" name="'+input_name+'" id="'+input_id+'" value="'+j.toString()+"-"+question.labels[j]+'" '+required_attr+'></input>'; //ron
         html += '</div>';
       }
 
