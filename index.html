@@ -103,8 +103,6 @@ function createTrials(data) {
 
   for (var i = 0; i < expLength; i++) {
 
-    console.log(data[i]['tr_type'])
-
     if(data[i]['tr_type']=='image') {
 
       var show_stim = {
@@ -128,7 +126,7 @@ function createTrials(data) {
 
     }
 
-    if(data[i]['tr_type'=='rect']) {
+    if(data[i]['tr_type']=='rect') {
 
       console.log(data[i]["total_num"])
 
