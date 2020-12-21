@@ -86,10 +86,15 @@ function createTrials(data) {
     // fullscreen_mode: false,
     message: "<br><br><br><p>Subject: "+subject_id.toString()+"</p><p>Order: "+trial_order.toString()+"</p><br>",
     button_label: "Click Here",
-    delay_after: 250
+    delay_after: 250,
+    on_finish: function(data) {
+      data.subject = subject_id,
+      data.order= trial_order;
+    }
+
   }
 
-  // timeline.push(welcome);
+  timeline.push(welcome);
 
   var wait_to_start = {
     type: "html-keyboard-response",
