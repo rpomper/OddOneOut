@@ -40,6 +40,7 @@
 //Enter subject id
 var subject_id = jsPsych.data.getURLVariable('sub')
 var trial_order = jsPsych.data.getURLVariable('order')
+let today = new Date()
 
 jsPsych.data.addProperties({
 	subject: subject_id,
@@ -89,7 +90,13 @@ function createTrials(data) {
     delay_after: 250,
     on_finish: function(data) {
       data.subject = subject_id,
-      data.order= trial_order;
+      data.order= trial_order,
+      data.date = today,
+      data.month = today.getMonth()+1,
+      data.day = today.getDate(),
+      data.year = today.getFullYear(),
+      data.hour = today.getHours(),
+      data.min = today.getMinutes();
     }
 
   }
