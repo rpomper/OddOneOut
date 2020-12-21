@@ -226,6 +226,37 @@ imageExt+'2-4-target.jpg'
 ]
 
 
+function postToRedcap(body) {
+  // https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch
+  return fetch("https://study.boystown.org/api/", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded",
+      Accept: "application/json",
+    },
+    body: body,
+  });
+}
+
+export function uploadToRedcap(token,data_export) {
+  postToRedcap("token=" + token + "&content=generateNextRecordName")
+    .then(function (response) {
+      return response.text();
+    })
+    .then(function (text) {
+      const id = text;
+      postToRedcap(
+        "token=" +
+          token +
+          "&content=record&format=json&type=flat&overwriteBehavior=normal&forceAutoNumber=false&data=[" +
+          JSON.stringify({ record_id: id, scent: "delightful" }) +
+          data_export+
+          "]&returnContent=count&returnFormat=json"
+      );
+    });
+}
+
+
 function startExperiment(data) {
   createTrials(data);
 jsPsych.init({
@@ -235,6 +266,7 @@ jsPsych.init({
   default_iti:0,
   on_finish: function() {
     jsPsych.data.displayData();
+    uploadToRedcap(D35996C68EB2185E13338E5C9173AF1A,jsPsych.data)
     // save_data('yumME','V1',subject_id, jsPsych.data.dataAsCSV());
   }
 });
