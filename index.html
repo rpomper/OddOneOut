@@ -238,7 +238,7 @@ function postToRedcap(body) {
   });
 }
 
-export function uploadToRedcap(token,data_export) {
+function uploadToRedcap(token,data_export) {
   postToRedcap("token=" + token + "&content=generateNextRecordName")
     .then(function (response) {
       return response.text();
