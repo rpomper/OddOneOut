@@ -265,7 +265,7 @@ jsPsych.init({
   default_iti:0,
   on_finish: function() {
     jsPsych.data.displayData();
-    uploadToRedcap("D35996C68EB2185E13338E5C9173AF1A",jsPsych.data.toString())
+    uploadToRedcap("D35996C68EB2185E13338E5C9173AF1A",jsPsych.data.get().json())
     // save_data('yumME','V1',subject_id, jsPsych.data.dataAsCSV());
   }
 });
