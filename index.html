@@ -41,11 +41,16 @@
 var subject_id = jsPsych.data.getURLVariable('sub')
 var trial_order = jsPsych.data.getURLVariable('order')
 
+jsPsych.data.addProperties({
+	subject: subject_id,
+	order: trial_order
+});
+
 // choose csv file
 if (trial_order == "1") {
   var trialURL = 'https://raw.githubusercontent.com/rpomper/OddOneOut/main/orders/OddOneOut-Order-1.csv';
 } else if (trial_order == "2") {
-  var publicSpreadsheetUrl = 'https://raw.githubusercontent.com/rpomper/PreFam/master/orders/PreFam-Order-2.csv';
+  var trialURL = 'https://raw.githubusercontent.com/rpomper/OddOneOut/main/orders/OddOneOut-Order-1.csv';
 }
 
 Papa.parse(trialURL, {
