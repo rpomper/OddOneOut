@@ -117,6 +117,29 @@ function createTrials(data) {
 
   timeline.push(wait_to_start);
 
+  var test_multi_select = {
+    type: 'survey-multi-select',
+    questions: [
+      {
+        prompt: "Which of these colors do you like?",
+        options: ["Red", "Yellow", "Green", "Blue", "Black"],
+        horizontal: true,
+        required: true,
+        name: 'Colors'
+      },
+      {
+        prompt: "Which of these foods do you like?",
+        options: ["Apples", "Bananas", "Carrots", "Donuts", "Eggplant"],
+        horizontal: true,
+        required: true,
+        name: 'Foods'
+      }
+    ],
+    randomize_question_order: true
+  }
+
+  timeline.push(test_multi_select);
+
   var expLength = data.length;
   var audioExt="stimuli/sounds/"
   var imageStart='<img src= "stimuli/images/'
