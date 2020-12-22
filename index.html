@@ -117,28 +117,18 @@ function createTrials(data) {
 
   timeline.push(wait_to_start);
 
-  var test_multi_select = {
-    type: 'survey-multi-select',
+  var page_1_options = ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"];
+  var page_2_options = ["Strongly Disagree", "Disagree", "Somewhat Disagree", "Neural", "Somewhat Agree", "Agree", "Strongly Agree"];
+
+  var multi_choice_example = {
+    type: 'survey-multi-choice',
     questions: [
-      {
-        prompt: "Which of these colors do you like?",
-        options: ["Red", "Yellow", "Green", "Blue", "Black"],
-        horizontal: true,
-        required: true,
-        name: 'Colors'
-      },
-      {
-        prompt: "Which of these foods do you like?",
-        options: ["Apples", "Bananas", "Carrots", "Donuts", "Eggplant"],
-        horizontal: true,
-        required: true,
-        name: 'Foods'
-      }
+      {prompt: "I like vegetables", name: 'Vegetables', options: page_1_options, required:true},
+      {prompt: "I like fruit", name: 'Fruit', options: page_2_options, required: false}
     ],
-    randomize_question_order: true
   }
 
-  timeline.push(test_multi_select);
+  timeline.push(multi_choice_example);
 
   var expLength = data.length;
   var audioExt="stimuli/sounds/"
