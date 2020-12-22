@@ -249,7 +249,8 @@ function uploadToRedcap(token,data_export) {
         "token=" +
           token +
           "&content=record&format=json&type=flat&overwriteBehavior=normal&forceAutoNumber=false&data=[" +
-          data_export+
+          JSON.stringify({ record_id: id, scent: "delightful" }) +
+          // data_export+
           "]&returnContent=count&returnFormat=json"
       );
     });
