@@ -253,7 +253,7 @@ function uploadToRedcap(token,data_export) {
         "token=" +
           token +
           "&content=record&format=json&type=flat&overwriteBehavior=normal&forceAutoNumber=false&data=[" +
-          JSON.stringify({ record_id: id, date: DoT.get().json(),results: jsPsych.data.get().json()}) +
+          JSON.stringify({ record_id: id, subject_num: subject_id, order: trial_order, date: DoT.get().json(),results: jsPsych.data.get().json()}) +
           // data_export+
           "]&returnContent=count&returnFormat=json"
       );
