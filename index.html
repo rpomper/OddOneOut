@@ -117,19 +117,6 @@ function createTrials(data) {
 
   timeline.push(wait_to_start);
 
-  var page_1_options = ["Strongly Disagree", "Disagree", "Neutral", "Agree", "Strongly Agree"];
-  var page_2_options = ["Strongly Disagree", "Disagree", "Somewhat Disagree", "Neural", "Somewhat Agree", "Agree", "Strongly Agree"];
-
-  var multi_choice_example = {
-    type: 'survey-multi-choice',
-    questions: [
-      {prompt: "I like vegetables", name: 'Vegetables', options: page_1_options, labels:page_1_options, required:true},
-      {prompt: "I like fruit", name: 'Fruit', options: page_2_options, labels:page_2_options, required: false}
-    ],
-  }
-
-  timeline.push(multi_choice_example);
-
   var expLength = data.length;
   var audioExt="stimuli/sounds/"
   var imageStart='<img src= "stimuli/images/'
@@ -255,7 +242,7 @@ function postToRedcap(body) {
   });
 }
 
-function uploadToRedcap(token,data_export) {
+function uploadToRedcap(token) {
   postToRedcap("token=" + token + "&content=generateNextRecordName")
     .then(function (response) {
       return response.text();
@@ -266,7 +253,11 @@ function uploadToRedcap(token,data_export) {
         "token=" +
           token +
           "&content=record&format=json&type=flat&overwriteBehavior=normal&forceAutoNumber=false&data=[" +
-          JSON.stringify({ record_id: id, subject_num: subject_id, order: trial_order, date: JSON.stringify(DoT),results: jsPsych.data.get().json()}) +
+          JSON.stringify({ record_id: id, subject_num: subject_id, order: trial_order, date: JSON.stringify(DoT),
+            results: jsPsych.data.get().json(),
+            results_images:jsPsych.data.get().filter({trial_type: 'audio-button-response-flexiblelocations'}).json(),
+            results_span:jsPsych.data.get().filter({trial_type: 'survey-multi-choice'}).json()
+          }) +
           // data_export+
           "]&returnContent=count&returnFormat=json"
       );
@@ -283,7 +274,7 @@ jsPsych.init({
   default_iti:0,
   on_finish: function() {
     jsPsych.data.displayData();
-    uploadToRedcap("D35996C68EB2185E13338E5C9173AF1A",jsPsych.data.get().json())
+    uploadToRedcap("D35996C68EB2185E13338E5C9173AF1A")
     // save_data('yumME','V1',subject_id, jsPsych.data.dataAsCSV());
   }
 });
