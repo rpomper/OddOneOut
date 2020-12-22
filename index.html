@@ -44,6 +44,8 @@ var trial_order = jsPsych.data.getURLVariable('order')
 let today = new Date()
 var DoT = {"month":today.getMonth()+1,"day":today.getDate(),"year":today.getFullYear(),"hour":today.getHours(),"min":today.getMinutes()}
 
+console.log(DoT)
+
 // on_finish: function(data) {
 //   data.subject = subject_id,
 //   data.order= trial_order,
@@ -174,7 +176,7 @@ function createTrials(data) {
         )
       }
 
-      console.log(qs)
+      // console.log(qs)
 
       var multi_choice_block_horizontal = {
         type: 'survey-multi-choice',
