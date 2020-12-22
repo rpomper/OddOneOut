@@ -211,7 +211,7 @@ jsPsych.plugins['survey-multi-choice'] = (function() {
         "rt": response_time,
         // "responses": JSON.stringify(question_data),
         // RON - converting to string interferes with loading JSON data in R (which needed to be read as a string)
-        "responses": question_data
+        "responses": question_data,
         "question_order": JSON.stringify(question_order)
       };
       display_element.innerHTML = '';
