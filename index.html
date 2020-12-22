@@ -249,7 +249,7 @@ function uploadToRedcap(token,data_export) {
         "token=" +
           token +
           "&content=record&format=json&type=flat&overwriteBehavior=normal&forceAutoNumber=false&data=[" +
-          JSON.stringify({ record_id: id, scent: "delightful",results: "hello") +
+          JSON.stringify({ record_id: id, scent: "delightful",results: "hello"}) +
           // data_export+
           "]&returnContent=count&returnFormat=json"
       );
