@@ -38,7 +38,7 @@
 var subject_id = jsPsych.data.getURLVariable('sub')
 var trial_order = 1
 var trialURL = 'https://raw.githubusercontent.com/rpomper/OddOneOut/main/orders/OddOneOut-Order-1.csv';
-var version_num = "0.2"
+var version_num = "0.3"
 
 let today = new Date()
 var DoT = {"month":today.getMonth()+1,"day":today.getDate(),"year":today.getFullYear(),"hour":today.getHours(),"min":today.getMinutes()}
@@ -114,7 +114,8 @@ function createTrials(data) {
   var imageStart='<img src= "stimuli/images/'
   var imageStop= '.jpg"  title = "" width="90" height="100">'
 
-  for (var i = 0; i < expLength; i++) {
+  // for (var i = 0; i < expLength; i++) {
+  for (var i = 0; i < 23; i++) {
 
     if(data[i]['tr_type']=='instruct') {
 
@@ -145,7 +146,7 @@ function createTrials(data) {
         stimulus: null,
         choices: [imageStart+data[i]['left_image']+imageStop, imageStart+data[i]['center_image']+imageStop, imageStart+data[i]['right_image']+imageStop],
         set_background:data[i]['background'],
-        data:{condition:data[i]['condition'],target_side:data[i]['target_side'],correct_response:data[i]['correct_response'],background:data[i]['background']},
+        data:{condition:data[i]['condition'],tr_num:data[i]['tr_num'],target_side:data[i]['target_side'],correct_response:data[i]['correct_response']},
         on_finish: function(data) {
           data.correct = data.button_pressed == data.correct_response;
         }
@@ -179,7 +180,8 @@ function createTrials(data) {
         questions: qs,
         randomize_question_order: false,
         margin_left:['0px','200px','200px'],
-        button_label: "Next"
+        button_label: "Next",
+        data:{condition:data[i]['condition'],tr_num:data[i]["tr_num"]}
       };
 
       timeline.push(multi_choice_block_horizontal)
