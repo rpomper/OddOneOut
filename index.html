@@ -39,7 +39,8 @@
 
 //Enter subject id
 var subject_id = jsPsych.data.getURLVariable('sub')
-var trial_order = jsPsych.data.getURLVariable('order')
+var trial_order = 1
+var trialURL = 'https://raw.githubusercontent.com/rpomper/OddOneOut/main/orders/OddOneOut-Order-1.csv';
 
 let today = new Date()
 var DoT = {"month":today.getMonth()+1,"day":today.getDate(),"year":today.getFullYear(),"hour":today.getHours(),"min":today.getMinutes()}
@@ -61,13 +62,6 @@ jsPsych.data.addProperties({
 	subject: subject_id,
 	order: trial_order
 });
-
-// choose csv file
-if (trial_order == "1") {
-  var trialURL = 'https://raw.githubusercontent.com/rpomper/OddOneOut/main/orders/OddOneOut-Order-1.csv';
-} else if (trial_order == "2") {
-  var trialURL = 'https://raw.githubusercontent.com/rpomper/OddOneOut/main/orders/OddOneOut-Order-1.csv';
-}
 
 Papa.parse(trialURL, {
 	          download: true,
@@ -100,7 +94,7 @@ function createTrials(data) {
   var welcome = {
     type: "fullscreen",
     // fullscreen_mode: false,
-    message: "<br><br><br><p>Subject: "+subject_id.toString()+"</p><p>Order: "+trial_order.toString()+"</p><br>",
+    message: "<br><br><br><p>Subject: "+subject_id.toString()+"</p><p>Version: 0.1 </p><br>",
     button_label: "Click Here",
     delay_after: 250
   }
@@ -108,11 +102,11 @@ function createTrials(data) {
   timeline.push(welcome);
 
   var wait_to_start = {
-    type: "html-keyboard-response",
+    type: "html-button-response",
     // fullscreen_mode: false,
-    choices:['space'],
+    choices:['NEXT'],
     set_background: 'white-background',
-    stimulus: "<br><br><br><br><br><br><br><br><p style='font-size:30px;'> When you are ready, press the space bar to begin.</br> </p>"
+    stimulus: "<br><br><br><br><br><br><br><br><p style='font-size:30px;'> When you are ready, press the button below to begin.</br> </p>"
   }
 
   timeline.push(wait_to_start);
@@ -127,9 +121,9 @@ function createTrials(data) {
     if(data[i]['tr_type']=='instruct') {
 
       var display_instructions = {
-        type: "html-keyboard-response",
+        type: "html-button-response",
         // fullscreen_mode: false,
-        choices:['space'],
+        choices:['NEXT'],
         set_background: 'white-background',
         stimulus: data[i]['text']
       }
