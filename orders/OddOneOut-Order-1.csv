@@ -8,7 +8,7 @@ total_num,condition,tr_num,tr_type,left_image,center_image,right_image,duration,
 7,1,3,rect,,,,,,,white-background,1,"foil,foil,target",NA,NA,NA,NA,NA,
 8,1,4,image,1-4-foil,1-4-foil,1-4-target,5000,R,2,white-background,,,,,,,,
 9,1,4,rect,,,,,,,white-background,1,"foil,foil,target",NA,NA,NA,NA,NA,
-10,2,1,instruct,,,,,,,white-background,,,,,,,,"<br><br><p style='font-size:30px;'> On the next two pages you will see three shapes on each<br>Decide which is the odd-one-out on each page and click on it<br>When requested, click on where the odd-one-out shape on each page appeared in the correct order<br><br><br>Press the button below to begin</p>"
+10,2,1,instruct,,,,,,,white-background,,,,,,,,"<p style='font-size:30px;'> On the next two pages you will see three shapes on each<br>Decide which is the odd-one-out on each page and click on it<br>When requested, click on where the odd-one-out shape on each page appeared in the correct order<br><br><br>Press the button below to begin</p>"
 11,2,1,image,2-1-target,2-1-foil,2-1-foil,5000,L,0,white-background,,,,,,,,
 12,2,2,image,2-2-target,2-2-foil,2-2-foil,5000,L,0,white-background,,,,,,,,
 13,2,1,rect,,,,,,,white-background,2,"target,foil,foil","target,foil,foil",NA,NA,NA,NA,
@@ -21,7 +21,7 @@ total_num,condition,tr_num,tr_type,left_image,center_image,right_image,duration,
 20,2,7,image,2-7-foil,2-7-target,2-7-foil,5000,C,1,white-background,,,,,,,,
 21,2,8,image,2-8-foil,2-8-target,2-8-foil,5000,C,1,white-background,,,,,,,,
 22,2,4,rect,,,,,,,white-background,2,"foil,foil,target","foil,target,foil",NA,NA,NA,NA,
-23,3,1,instruct,,,,,,,white-background,,,,,,,,"<br><br><p style='font-size:30px;'> On the next three pages you will see three shapes on each<br>Decide which is the odd-one-out on each page and click on it<br>When requested, click on where the odd-one-out shape on each page appeared in the correct order<br><br><br>Press the button below to begin</p>"
+23,3,1,instruct,,,,,,,white-background,,,,,,,,"<p style='font-size:30px;'> On the next three pages you will see three shapes on each<br>Decide which is the odd-one-out on each page and click on it<br>When requested, click on where the odd-one-out shape on each page appeared in the correct order<br><br><br>Press the button below to begin</p>"
 24,3,1,image,3-1-foil,3-1-target,3-1-foil,5000,C,1,white-background,,,,,,,,
 25,3,2,image,3-2-target,3-2-foil,3-2-foil,5000,L,0,white-background,,,,,,,,
 26,3,3,image,3-3-target,3-3-foil,3-3-foil,5000,L,0,white-background,,,,,,,,
@@ -38,7 +38,7 @@ total_num,condition,tr_num,tr_type,left_image,center_image,right_image,duration,
 37,3,11,image,3-11-foil,3-11-target,3-11-foil,5000,C,1,white-background,,,,,,,,
 38,3,12,image,3-12-target,3-12-foil,3-12-foil,5000,L,0,white-background,,,,,,,,
 39,3,4,rect,,,,,,,white-background,3,"target,foil,foil","foil,target,foil","target,foil,foil",NA,NA,NA,
-40,4,1,instruct,,,,,,,white-background,,,,,,,,"<br><br><p style='font-size:30px;'> On the next four pages you will see three shapes on each<br>Decide which is the odd-one-out on each page and click on it<br>When requested, click on where the odd-one-out shape on each page appeared in the correct order<br><br><br>Press the button below to begin</p>"
+40,4,1,instruct,,,,,,,white-background,,,,,,,,"<p style='font-size:30px;'> On the next four pages you will see three shapes on each<br>Decide which is the odd-one-out on each page and click on it<br>When requested, click on where the odd-one-out shape on each page appeared in the correct order<br><br><br>Press the button below to begin</p>"
 41,4,1,image,4-1-foil,4-1-target,4-1-foil,5000,C,1,white-background,,,,,,,,
 42,4,2,image,4-2-foil,4-2-foil,4-2-target,5000,R,2,white-background,,,,,,,,
 43,4,3,image,4-3-foil,4-3-foil,4-3-target,5000,R,2,white-background,,,,,,,,
@@ -59,7 +59,7 @@ total_num,condition,tr_num,tr_type,left_image,center_image,right_image,duration,
 58,4,15,image,4-15-foil,4-15-target,4-15-foil,5000,C,1,white-background,,,,,,,,
 59,4,16,image,4-16-foil,4-16-foil,4-16-target,5000,R,2,white-background,,,,,,,,
 60,4,4,rect,,,,,,,white-background,4,"foil,foil,target","target,foil,foil","foil,target,foil","foil,foil,target",NA,NA,
-61,5,1,instruct,,,,,,,white-background,,,,,,,,"<br><br><p style='font-size:30px;'> On the next five pages you will see three shapes on each<br>Decide which is the odd-one-out on each page and click on it<br>When requested, click on where the odd-one-out shape on each page appeared in the correct order<br><br><br>Press the button below to begin</p>"
+61,5,1,instruct,,,,,,,white-background,,,,,,,,"<p style='font-size:30px;'> On the next five pages you will see three shapes on each<br>Decide which is the odd-one-out on each page and click on it<br>When requested, click on where the odd-one-out shape on each page appeared in the correct order<br><br><br>Press the button below to begin</p>"
 62,5,1,image,5-1-foil,5-1-foil,5-1-target,5000,R,2,white-background,,,,,,,,
 63,5,2,image,5-2-foil,5-2-target,5-2-foil,5000,C,1,white-background,,,,,,,,
 64,5,3,image,5-3-target,5-3-foil,5-3-foil,5000,L,0,white-background,,,,,,,,
@@ -84,7 +84,7 @@ total_num,condition,tr_num,tr_type,left_image,center_image,right_image,duration,
 83,5,19,image,5-19-foil,5-19-target,5-19-foil,5000,C,1,white-background,,,,,,,,
 84,5,20,image,5-20-foil,5-20-foil,5-20-target,5000,R,2,white-background,,,,,,,,
 85,5,4,rect,,,,,,,white-background,5,"foil,target,foil","target,foil,foil","foil,target,foil","foil,target,foil","foil,foil,target",NA,
-86,6,1,instruct,,,,,,,white-background,,,,,,,,"<br><br><p style='font-size:30px;'> On the next six pages you will see three shapes on each<br>Decide which is the odd-one-out on each page and click on it<br>When requested, click on where the odd-one-out shape on each page appeared in the correct order<br><br><br>Press the button below to begin</p>"
+86,6,1,instruct,,,,,,,white-background,,,,,,,,"<p style='font-size:30px;'> On the next six pages you will see three shapes on each<br>Decide which is the odd-one-out on each page and click on it<br>When requested, click on where the odd-one-out shape on each page appeared in the correct order<br><br><br>Press the button below to begin</p>"
 87,6,1,image,6-1-target,6-1-foil,6-1-foil,5000,L,0,white-background,,,,,,,,
 88,6,2,image,6-2-foil,6-2-target,6-2-foil,5000,C,1,white-background,,,,,,,,
 89,6,3,image,6-3-foil,6-3-foil,6-3-target,5000,R,2,white-background,,,,,,,,
