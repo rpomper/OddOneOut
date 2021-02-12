@@ -5,10 +5,7 @@
   <title>OddOneOut</title>
   <meta charset="utf-8"/>
   <script src="jspsych-6.1.0/jspsych.js"> </script>
-  <script src="jspsych-6.1.0/plugins/jspsych-audio-keyboard-response.js"></script>
-  <script src="jspsych-6.1.0/plugins/jspsych-html-keyboard-response.js"></script>
-  <script src="jspsych-6.1.0/plugins/jspsych-image-keyboard-response.js"></script>
-  <script src="jspsych-6.1.0/plugins/jspsych-free-sort.js"></script>
+  <script src="jspsych-6.1.0/plugins/jspsych-html-button-response.js"></script>
   <script src="jspsych-6.1.0/plugins/jspsych-fullscreen.js"></script>
   <script src="jspsych-6.1.0/plugins/jspsych-audio-button-response-flexiblelocations.js"></script>
   <script src="jspsych-6.1.0/plugins/jspsych-survey-multi-choice.js"></script>
@@ -41,6 +38,7 @@
 var subject_id = jsPsych.data.getURLVariable('sub')
 var trial_order = 1
 var trialURL = 'https://raw.githubusercontent.com/rpomper/OddOneOut/main/orders/OddOneOut-Order-1.csv';
+var version_num = "0.2"
 
 let today = new Date()
 var DoT = {"month":today.getMonth()+1,"day":today.getDate(),"year":today.getFullYear(),"hour":today.getHours(),"min":today.getMinutes()}
@@ -94,7 +92,7 @@ function createTrials(data) {
   var welcome = {
     type: "fullscreen",
     // fullscreen_mode: false,
-    message: "<br><br><br><p>Subject: "+subject_id.toString()+"</p><p>Version: 0.1 </p><br>",
+    message: "<br><br><br><p>Subject: "+subject_id.toString()+"</p><p>Version: "+version_num+"</p><br>",
     button_label: "Click Here",
     delay_after: 250
   }
