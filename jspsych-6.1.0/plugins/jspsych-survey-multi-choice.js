@@ -142,7 +142,8 @@ jsPsych.plugins['survey-multi-choice'] = (function() {
       // add question text
       html += '<p class="jspsych-survey-multi-choice-text survey-multi-choice">' + question.prompt
       if(question.required){
-        html += "<span class='required'>*</span>";
+        // ron - removed to prevent red * from appearing above each row
+        // html += "<span class='required'>*</span>";
       }
       html += '</p>';
 

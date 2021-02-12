@@ -18,7 +18,7 @@ total_num,condition,tr_num,tr_type,left_image,center_image,right_image,duration,
 17,2,5,image,2-5-target,2-5-foil,2-5-foil,5000,L,0,white-background,,,,,,,,
 18,2,6,image,2-6-foil,2-6-foil,2-6-target,5000,R,2,white-background,,,,,,,,
 19,2,3,rect,,,,,,,white-background,2,"target,foil,foil","foil,foil,target",NA,NA,NA,NA,
-20,2,7,image,2-7-foil,2-7-target,2-7-foil,5000,R,2,white-background,,,,,,,,
+20,2,7,image,2-7-foil,2-7-target,2-7-foil,5000,C,1,white-background,,,,,,,,
 21,2,8,image,2-8-foil,2-8-target,2-8-foil,5000,C,1,white-background,,,,,,,,
 22,2,4,rect,,,,,,,white-background,2,"foil,foil,target","foil,target,foil",NA,NA,NA,NA,
 23,3,1,instruct,,,,,,,white-background,,,,,,,,"<br><br><p style='font-size:30px;'> On the next three pages you will see three shapes on each<br>Decide which is the odd-one-out on each page and click on it<br>When requested, click on where the odd-one-out shape on each page appeared in the correct order<br><br><br>Press the button below to begin</p>"
