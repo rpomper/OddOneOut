@@ -38,7 +38,7 @@
 var subject_id = jsPsych.data.getURLVariable('sub')
 var trial_order = 1
 var trialURL = 'https://raw.githubusercontent.com/rpomper/OddOneOut/main/orders/OddOneOut-Order-1.csv';
-var version_num = "0.8"
+var version_num = "0.9"
 
 let today = new Date()
 var DoT = {"month":today.getMonth()+1,"day":today.getDate(),"year":today.getFullYear(),"hour":today.getHours(),"min":today.getMinutes()}
@@ -89,22 +89,22 @@ var timeline = []
 
 function createTrials(data) {
 
-  var welcome = {
-    type: "fullscreen",
-    fullscreen_mode: false,
-    message: "<br><br><br><p>Subject: "+subject_id.toString()+"</p><p>Version: "+version_num+"</p><br>",
-    button_label: "Click Here",
-    delay_after: 250
-  }
-
-  timeline.push(welcome);
+  // var welcome = {
+  //   type: "fullscreen",
+  //   fullscreen_mode: false,
+  //   message: "<br><br><br><p>Subject: "+subject_id.toString()+"</p><p>Version: "+version_num+"</p><br>",
+  //   button_label: "Click Here",
+  //   delay_after: 250
+  // }
+  //
+  // timeline.push(welcome);
 
   var wait_to_start = {
     type: "html-button-response",
     // fullscreen_mode: false,
-    choices:['NEXT'],
+    choices:['START'],
     set_background: 'white-background',
-    stimulus: "<br><br><br><br><br><br><br><br><p style='font-size:30px;'> When you are ready, press the button below to begin.</br> </p>"
+    stimulus: "<br><br><br><br><br><br><br><br><p style='font-size:30px;'> Subject: "+subject_id.toString()+"<br>Version: "+version_num+" <br><br> When you are ready, press the button below to begin.</br> </p>"
   }
 
   timeline.push(wait_to_start);
