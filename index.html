@@ -38,7 +38,7 @@
 var subject_id = jsPsych.data.getURLVariable('sub')
 var trial_order = 1
 var trialURL = 'https://raw.githubusercontent.com/rpomper/OddOneOut/main/orders/OddOneOut-Order-1.csv';
-var version_num = "0.12"
+var version_num = "0.13"
 
 let today = new Date()
 var DoT = {"month":today.getMonth()+1,"day":today.getDate(),"year":today.getFullYear(),"hour":today.getHours(),"min":today.getMinutes()}
@@ -104,7 +104,7 @@ function createTrials(data) {
     // fullscreen_mode: false,
     choices:['START'],
     set_background: 'white-background',
-    stimulus: "<p style='font-size:30px;'><br> Subject: "+subject_id.toString()+"<br><br>Version: "+version_num+" <br><br> When you are ready, press the button below to begin.</br> </p>"
+    stimulus: "<div text-align:left><p style='font-size:30px;'><br> Subject: "+subject_id.toString()+"<br><br>Version: "+version_num+" <br><br> When you are ready, press the button below to begin.</br> </p></div>"
   }
 
   timeline.push(wait_to_start);
