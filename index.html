@@ -210,7 +210,7 @@ function createTrials(data) {
           for (var s = -span_size; s < 0; s++) {
             past_trial = jsPsych.data.get().filter({trial_index:data.trial_index+s}).json();
             console.log(past_trial)
-            console.log(past_trial[0]['correct')
+            console.log(past_trial[0]['correct'])
             if (past_trial[0]['correct'] == true) {past_choice = past_trial[0]['button_pressed']+"-target"}
             if (past_trial[0]['correct'] == false) {past_choice = past_trial[0]['button_pressed']+"-foil"}
             console.log(past_choice)
