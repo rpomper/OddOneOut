@@ -38,7 +38,7 @@
 var subject_id = jsPsych.data.getURLVariable('sub')
 var trial_order = 1
 var trialURL = 'https://raw.githubusercontent.com/rpomper/OddOneOut/main/orders/OddOneOut-Order-1.csv';
-var version_num = "0.10"
+var version_num = "0.11"
 
 let today = new Date()
 var DoT = {"month":today.getMonth()+1,"day":today.getDate(),"year":today.getFullYear(),"hour":today.getHours(),"min":today.getMinutes()}
@@ -104,7 +104,7 @@ function createTrials(data) {
     // fullscreen_mode: false,
     choices:['START'],
     set_background: 'white-background',
-    stimulus: "<br><br><br><br><br><br><br><br><p style='font-size:30px;'> Subject: "+subject_id.toString()+"<br>Version: "+version_num+" <br><br> When you are ready, press the button below to begin.</br> </p>"
+    stimulus: "<p style='font-size:30px;'><br> Subject: "+subject_id.toString()+"<br><br>Version: "+version_num+" <br><br> When you are ready, press the button below to begin.</br> </p>"
   }
 
   timeline.push(wait_to_start);
@@ -114,6 +114,25 @@ function createTrials(data) {
   var imageStart='<img src= "stimuli/images/'
   // var imageStop= '.jpg"  title = "" width="90" height="100">'
   var imageStop= '.jpg"  title = "" width="135" height="150">'
+
+
+
+  // PRACTICE
+
+  var display_instructions = {
+
+    type: "html-button-response",
+    choices:['NEXT'],
+    set_background: 'white-background',
+    stimulus: "<p style='font-size:60px; font-weight:bold'> Practice Trials <br></p><p style='font-size:30px;'><h1> To begin with there are two practice trials to get you used to what you need to do. <h1>On the next page you will see three shapes <h1>Decide which shape is the odd-one-out and click on it <h1>When requested, click on where the odd-one-out appeared in the box</h1></p>"
+
+  }
+
+  timeline.push(display_instructions)
+
+
+
+
 
   for (var i = 0; i < expLength; i++) {
   // for (var i = 0; i < 23; i++) {
@@ -210,6 +229,12 @@ var imageExt = 'stimuli/images/'
 var images = [imageExt+'rectangle.jpg',
 imageExt+'white-background.jpg',
 imageExt+'black-background.jpg',
+imageExt+'0-1-foil.jpg',
+imageExt+'0-1-target.jpg',
+imageExt+'0-2-foil.jpg',
+imageExt+'0-2-target.jpg',
+imageExt+'0-3-foil.jpg',
+imageExt+'0-3-target.jpg',
 imageExt+'1-1-foil.jpg',
 imageExt+'1-1-target.jpg',
 imageExt+'1-2-foil.jpg',
