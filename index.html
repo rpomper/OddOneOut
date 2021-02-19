@@ -38,7 +38,7 @@
 var subject_id = jsPsych.data.getURLVariable('sub')
 var trial_order = 1
 var trialURL = 'https://raw.githubusercontent.com/rpomper/OddOneOut/main/orders/OddOneOut-Order-1.csv';
-var version_num = "0.26"
+var version_num = "0.27"
 
 let today = new Date()
 var DoT = {"month":today.getMonth()+1,"day":today.getDate(),"year":today.getFullYear(),"hour":today.getHours(),"min":today.getMinutes()}
@@ -210,9 +210,9 @@ function createTrials(data) {
           for (var s = -span_size; s < 0; s++) {
             past_trial = jsPsych.data.get().filter({trial_index:data.trial_index+s}).json();
             console.log(past_trial)
-            console.log(past_trial[0]['correct'])
-            if (past_trial[0]['correct'] == true) {past_choice = past_trial[0]['button_pressed']+"-target"}
-            if (past_trial[0]['correct'] == false) {past_choice = past_trial[0]['button_pressed']+"-foil"}
+            console.log(past_trial[1]['correct'])
+            if (past_trial[1]['correct'] == true) {past_choice = past_trial[1]['button_pressed']+"-target"}
+            if (past_trial[1]['correct'] == false) {past_choice = past_trial[1]['button_pressed']+"-foil"}
             console.log(past_choice)
           }
         }
