@@ -65,17 +65,18 @@ document.body.style.backgroundSize = "100%";
 document.body.style.backgroundPosition = "top";
 document.body.style.backgroundRepeat = "no-repeat";
 
-var expLength = data.length;
-var audioExt="stimuli/sounds/"
-var imageStart='<img src= "stimuli/images/'
-// var imageStop= '.jpg"  title = "" width="90" height="100">'
-var imageStop= '.jpg"  title = "" width="135" height="150">'
-var rectangles = ['<img src= "stimuli/images/rectangle.jpg" width="90" height="100">', '<img src= "stimuli/images/rectangle.jpg" width="90" height="100">','<img src= "stimuli/images/rectangle.jpg" width="90" height="100">'];
-
 
 var timeline = []
 
 function createTrials(data) {
+
+  var expLength = data.length;
+  var audioExt="stimuli/sounds/"
+  var imageStart='<img src= "stimuli/images/'
+  // var imageStop= '.jpg"  title = "" width="90" height="100">'
+  var imageStop= '.jpg"  title = "" width="135" height="150">'
+  var rectangles = ['<img src= "stimuli/images/rectangle.jpg" width="90" height="100">', '<img src= "stimuli/images/rectangle.jpg" width="90" height="100">','<img src= "stimuli/images/rectangle.jpg" width="90" height="100">'];
+
 
 
   var wait_to_start = {
