@@ -38,23 +38,12 @@
 var subject_id = jsPsych.data.getURLVariable('sub')
 var trial_order = 1
 var trialURL = 'https://raw.githubusercontent.com/rpomper/OddOneOut/main/orders/OddOneOut-Order-1.csv';
-var version_num = "0.28"
+var version_num = "0.29"
 
 let today = new Date()
 var DoT = {"month":today.getMonth()+1,"day":today.getDate(),"year":today.getFullYear(),"hour":today.getHours(),"min":today.getMinutes()}
 
 console.log(DoT)
-
-// on_finish: function(data) {
-//   data.subject = subject_id,
-//   data.order= trial_order,
-//   data.date = today,
-//   data.month = today.getMonth()+1,
-//   data.day = today.getDate(),
-//   data.year = today.getFullYear(),
-//   data.hour = today.getHours(),
-//   data.min = today.getMinutes();
-// }
 
 jsPsych.data.addProperties({
 	subject: subject_id,
@@ -72,48 +61,32 @@ Papa.parse(trialURL, {
 	          }
 	        })
 
-// function showInfo(data, tabletop) {
-//   alert('Successfully processed!')
-//   console.log(data);
-// }
-
-// window.addEventListener('DOMContentLoaded', init)
-
-// document.body.style.backgroundColor = "white";
 document.body.style.backgroundSize = "100%";
 document.body.style.backgroundPosition = "top";
 document.body.style.backgroundRepeat = "no-repeat";
+
+var expLength = data.length;
+var audioExt="stimuli/sounds/"
+var imageStart='<img src= "stimuli/images/'
+// var imageStop= '.jpg"  title = "" width="90" height="100">'
+var imageStop= '.jpg"  title = "" width="135" height="150">'
+var rectangles = ['<img src= "stimuli/images/rectangle.jpg" width="90" height="100">', '<img src= "stimuli/images/rectangle.jpg" width="90" height="100">','<img src= "stimuli/images/rectangle.jpg" width="90" height="100">'];
 
 
 var timeline = []
 
 function createTrials(data) {
 
-  // var welcome = {
-  //   type: "fullscreen",
-  //   fullscreen_mode: false,
-  //   message: "<br><br><br><p>Subject: "+subject_id.toString()+"</p><p>Version: "+version_num+"</p><br>",
-  //   button_label: "Click Here",
-  //   delay_after: 250
-  // }
-  //
-  // timeline.push(welcome);
 
   var wait_to_start = {
     type: "html-button-response",
     // fullscreen_mode: false,
-    choices:['START'],
+    choices:['<img src= "stimuli/images/start-button.jpg" title = "" width="200" height="100">'],
     set_background: 'white-background',
     stimulus: "<p style='font-size:30px;'><br> Subject: "+subject_id.toString()+"<br><br>Version: "+version_num+" <br><br> When you are ready, press the button below to begin.</br> </p>"
   }
 
   timeline.push(wait_to_start);
-
-  var expLength = data.length;
-  var audioExt="stimuli/sounds/"
-  var imageStart='<img src= "stimuli/images/'
-  // var imageStop= '.jpg"  title = "" width="90" height="100">'
-  var imageStop= '.jpg"  title = "" width="135" height="150">'
 
 
 
@@ -122,13 +95,47 @@ function createTrials(data) {
   var display_instructions = {
 
     type: "html-button-response",
-    choices:['NEXT'],
+    choices:['<img src= "stimuli/images/start-button.jpg" title = "" width="200" height="100">'],
     set_background: 'white-background',
     stimulus: "<p style='font-size:60px; font-weight:bold'> Practice Trials</p><div text-align:left><p><h1 style='font-size:30px; font-weight:normal'> To begin with there are two practice trials to get you used to what you need to do. <h1>On the next page you will see three shapes <h1>Decide which shape is the odd-one-out and click on it <h1>When requested, click on where the odd-one-out appeared in the box</h1></p></div>"
 
   }
 
   timeline.push(display_instructions)
+
+  var practice_1_identify = {
+    type: 'audio-button-response-flexiblelocations',
+    trial_duration: null,
+    response_ends_trial: true,
+    margin_left: ['0px','200px','200px'],
+    stimulus: undefined,
+    prompt: "<h1 style='font-size:30px; font-weight:normal'> Which shape is the odd-one-out?",
+    choices: [imageStart+"0-1-foil"+imageStop, imageStart+"0-1-foil"+imageStop, imageStart+"0-1-target"+imageStop],
+    set_background:"white-background",
+    data:{condition:"practice",tr_num:"1",target_side:"right",correct_response:"2"},
+    on_finish: function(data) {
+      data.correct = data.button_pressed == data.correct_response;
+    }
+  }
+
+  timeline.push(practice_1_identify)
+
+
+  var practice_1_span = {
+    type: 'survey-multi-choice',
+    questions: [
+      {prompt: "<h1 style='font-size:30px; font-weight:normal'>Now click on where the odd-one-out shape appeared on the gride below",
+      options: rectangles,
+      labels: ['foil','foil','target'], required: false, horizontal: true,}
+    ],
+    randomize_question_order: false,
+    margin_left:['0px','200px','200px'],
+    button_label: '<img src= "stimuli/images/start-button.jpg" title = "" width="200" height="100">',
+    data:{condition:"practice",tr_num:"1"}
+    }
+  };
+
+  timeline.push(practice_1_span)
 
 
 
@@ -180,7 +187,7 @@ function createTrials(data) {
 
       // console.log(data[i]["total_num"])
 
-      var rectangles = ['<img src= "stimuli/images/rectangle.jpg" width="90" height="100">', '<img src= "stimuli/images/rectangle.jpg" width="90" height="100">','<img src= "stimuli/images/rectangle.jpg" width="90" height="100">'];
+      // var rectangles = ['<img src= "stimuli/images/rectangle.jpg" width="90" height="100">', '<img src= "stimuli/images/rectangle.jpg" width="90" height="100">','<img src= "stimuli/images/rectangle.jpg" width="90" height="100">'];
       qs = []
 
       for (var j = 1; j <= data[i]['length']; j++) {
@@ -246,6 +253,9 @@ var imageExt = 'stimuli/images/'
 var images = [imageExt+'rectangle.jpg',
 imageExt+'white-background.jpg',
 imageExt+'black-background.jpg',
+imageExt+'start-button.jpg',
+imageExt+'next-button.jpg',
+imageExt+'ok-button.jpg',
 imageExt+'0-1-foil.jpg',
 imageExt+'0-1-target.jpg',
 imageExt+'0-2-foil.jpg',
