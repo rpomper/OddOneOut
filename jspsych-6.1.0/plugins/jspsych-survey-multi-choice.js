@@ -96,12 +96,13 @@ jsPsych.plugins['survey-multi-choice'] = (function() {
 
     // inject CSS for trial
     html += '<style id="jspsych-survey-multi-choice-css">';
-    html += ".jspsych-survey-multi-choice-question { margin-top: 2em; margin-bottom: 2em; text-align: left; }"+
+    // html += ".jspsych-survey-multi-choice-question { margin-top: 2em; margin-bottom: 2em; text-align: left; }"+
+    html += ".jspsych-survey-multi-choice-question { margin-top: 0px; margin-bottom: 0px; text-align: center; }"+
       ".jspsych-survey-multi-choice-text span.required {color: darkred;}"+
       ".jspsych-survey-multi-choice-horizontal .jspsych-survey-multi-choice-text {  text-align: center;}"+
       ".jspsych-survey-multi-choice-option { line-height: 2; }"+
-      ".jspsych-survey-multi-choice-horizontal .jspsych-survey-multi-choice-option {  display: inline-block;  margin-left: 1em;  margin-right: 1em;  vertical-align: top;}"+
-      "label.jspsych-survey-multi-choice-text input[type='radio'] {margin-right: 1em;}";
+      ".jspsych-survey-multi-choice-horizontal .jspsych-survey-multi-choice-option {  display: inline-block;  margin-left: 0px;  margin-right: 0px;  vertical-align: top;}"+
+      "label.jspsych-survey-multi-choice-text input[type='radio'] {margin-right: 0px;}";
     html += '</style>';
 
     // show preamble text
@@ -139,13 +140,13 @@ jsPsych.plugins['survey-multi-choice'] = (function() {
 
       html += '<div id="jspsych-survey-multi-choice-'+question_id+'" class="'+question_classes.join(' ')+'"  data-name="'+question.name+'">';
 
-      // add question text
-      html += '<p class="jspsych-survey-multi-choice-text survey-multi-choice">' + question.prompt
-      if(question.required){
-        // ron - removed to prevent red * from appearing above each row
-        // html += "<span class='required'>*</span>";
-      }
-      html += '</p>';
+      // // add question text
+      // html += '<p class="jspsych-survey-multi-choice-text survey-multi-choice">' + question.prompt
+      // if(question.required){
+      //   // ron - removed to prevent red * from appearing above each row
+      //   // html += "<span class='required'>*</span>";
+      // }
+      // html += '</p>';
 
       // create option radio buttons
       for (var j = 0; j < question.options.length; j++) {
@@ -160,22 +161,27 @@ jsPsych.plugins['survey-multi-choice'] = (function() {
         // html += '<div id="'+option_id_name+'" class="jspsych-survey-multi-choice-option">';
         // ron - add margin-left
         html += '<div id="'+option_id_name+'" class="jspsych-survey-multi-choice-option" style="margin-left:'+trial.margin_left[j]+'">';
-
         html += '<label class="jspsych-survey-multi-choice-text" for="'+input_id+'">'+question.options[j]+'</label>';
         // html += '<input type="radio" name="'+input_name+'" id="'+input_id+'" value="'+question.options[j]+'" '+required_attr+'></input>';
         html += '<input type="radio" name="'+input_name+'" id="'+input_id+'" value="'+j.toString()+"-"+question.labels[j]+'" '+required_attr+'></input>'; //ron
         html += '</div>';
       }
 
-      html += '</div>';
+      html += '</div>'
+
     }
+
+    // ron moved the question text here - so it will only occur once at the bottom, rather than above each row of responses (i.e., rectangle)
+    // add question text
+    html += '<p class="jspsych-survey-multi-choice-text survey-multi-choice">' + question.prompt
+
 
     // add submit button
     // html += '<input type="submit" id="'+plugin_id_name+'-next" class="'+plugin_id_name+' jspsych-btn"' + (trial.button_label ? ' value="'+trial.button_label + '"': '') + '></input>';
 
     // ron add submit button
     html += "<button id='jspsych-survey-multi-choice-btn' class='jspsych-btn'"+
-        "style='margin-left: 5px;'>"+trial.button_label+
+        "style='margin-right: 30px;'>"+trial.button_label+
         "</button>";
 
     // html += '</form>';

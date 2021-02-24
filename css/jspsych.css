@@ -96,6 +96,13 @@
   cursor: not-allowed;
 }
 
+/* ron */
+/* .jspsych-survey-multi-choice-question {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  text-align: center;
+} */
+
 /* jsPsych progress bar */
 
 #jspsych-progressbar-container {
@@ -134,17 +141,28 @@
 
 
 /* Ron & Martin change the default background to black */
-  body {
-    background-image: url('white-background.jpg');
-    color: black
-  }
+body {
+  /* background-image: url('white-background.jpg'); */
+  color: white;
+  margin: 0;
+  text-align: center;
+  font-size: 30px;
+}
+
+p {
+  font-size:30px;
+  font-weight: normal;
+  color: black;
+  text-align: center;
+}
 
 
-  h1 {
-      font-size:30px;
-      font-weight:normal;
-      text-align:left;
-      display: list-item;          /* This has to be "list-item"                                               */
-      list-style-type: disc;       /* See https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type     */
-      list-style-position: inside; /* See https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-position */
-  }
+h1 {
+    font-size:30px;
+    color: black;
+    font-weight:normal;
+    text-align:left;
+    display: list-item;          /* This has to be "list-item"                                               */
+    list-style-type: disc;       /* See https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-type     */
+    list-style-position: inside; /* See https://developer.mozilla.org/en-US/docs/Web/CSS/list-style-position */
+}

@@ -21,6 +21,14 @@
     top:10px;
     border: 3px solid #73AD21;
   }
+
+  /* p {
+    font-size:30px;
+    font-weight: normal;
+    color: black;
+    text-align: center;
+  } */
+
   </style>
 </head>
 <body>
@@ -38,7 +46,7 @@
 var subject_id = jsPsych.data.getURLVariable('sub')
 var trial_order = 1
 var trialURL = 'https://raw.githubusercontent.com/rpomper/OddOneOut/main/orders/OddOneOut-Order-1.csv';
-var version_num = "0.38"
+var version_num = "0.40"
 
 let today = new Date()
 var DoT = {"month":today.getMonth()+1,"day":today.getDate(),"year":today.getFullYear(),"hour":today.getHours(),"min":today.getMinutes()}
@@ -76,15 +84,16 @@ function createTrials(data) {
   // var imageStop= '.jpg"  title = "" width="90" height="100">'
   var imageStop= '.jpg"  title = "" width="135" height="150">'
   var rectangles = ['<img src= "stimuli/images/rectangle.jpg" width="90" height="100">', '<img src= "stimuli/images/rectangle.jpg" width="90" height="100">','<img src= "stimuli/images/rectangle.jpg" width="90" height="100">'];
-
+  var start_button = '<img src= "stimuli/images/start-button.jpg" title = "" width="130" height="65">'
+  var next_button = '<img src= "stimuli/images/next-button.jpg" title = "" width="130" height="65">'
 
 
   var wait_to_start = {
     type: "html-button-response",
-    // fullscreen_mode: false,
-    choices:['<img src= "stimuli/images/start-button.jpg" title = "" width="150" height="75">'],
+    choices:[start_button],
     set_background: 'white-background',
-    stimulus: "<p style='font-size:30px;'><br> Subject: "+subject_id.toString()+"<br><br>Version: "+version_num+" <br><br> When you are ready, press the button below to begin.</br> </p>"
+    stimulus: "<p>Subject: "+subject_id.toString()+"<br><br>Version: "+version_num+" <br><br> When you are ready, press the button below to begin.</br> </p>"
+    // stimulus: "<p style='font-size:30px;'><br> Subject: "+subject_id.toString()+"<br><br>Version: "+version_num+" <br><br> When you are ready, press the button below to begin.</br> </p>"
   }
 
   timeline.push(wait_to_start);
@@ -93,62 +102,101 @@ function createTrials(data) {
 
   // PRACTICE
 
-  var practice_1_instructions = {
 
-    type: "html-button-response",
-    choices:['<img src= "stimuli/images/next-button.jpg" title = "" width="150" height="75">'],
-    set_background: 'white-background',
-    stimulus: "<p style='font-size:60px; font-weight:bold'> Practice Trials</p><div text-align:left><p><h1 style='font-size:30px; font-weight:normal'> To begin with there are two practice trials to get you used to what you need to do. <h1>On the next page you will see three shapes <h1>Decide which shape is the odd-one-out and click on it <h1>When requested, click on where the odd-one-out appeared in the box</h1></p></div>"
+  var practice = [{tr_num:"0-1",left_image:'0-1-foil',center_image:'0-1-foil',right_image:'0-1-target',target_side:"R",correct_response:2},
+  {tr_num:"0-2",length:1,prompt:"<h1>Now click on where the odd-one-out shape appeared on the grid below</h1>",labels1:['foil','foil','target']},
+  {tr_num:"0-3",left_image:'0-2-target',center_image:'0-2-foil',right_image:'0-2-foil',target_side:"L",correct_response:0},
+  {tr_num:"0-4",left_image:'0-3-foil',center_image:'0-3-target',right_image:'0-3-foil',target_side:"C",correct_response:1},
+  {tr_num:"0-5",length:2,prompt:"<h1>Now click on where the odd-one-out shapes appeared in the correct order</h1>",labels1:['target','foil','foil'],labels2:['foil','target','foil']}]
+
+
+    var practice_1_instructions = {
+
+      type: "html-button-response",
+      choices:[next_button],
+      set_background: 'white-background',
+      // stimulus: "<p style='font-size:60px; font-weight:bold'> Practice Trials</p><div text-align:left><p><h1 style='font-size:30px; font-weight:normal'> To begin with there are two practice trials to get you used to what you need to do. <h1>On the next page you will see three shapes <h1>Decide which shape is the odd-one-out and click on it <h1>When requested, click on where the odd-one-out appeared in the box</h1></p></div>"
+      stimulus: "<p style='font-size:60px; font-weight:bold'> Practice Trials</p><h1> To begin with there are two practice trials to get you used to what you need to do. <h1>On the next page you will see three shapes <h1>Decide which shape is the odd-one-out and click on it <h1>When requested, click on where the odd-one-out appeared in the box</h1>"
+    }
+
+
+    var practice_2_instructions = {
+
+      type: "html-button-response",
+      choices:[next_button],
+      set_background: 'white-background',
+      stimulus: "<h1> On the next practice trial you will have two pages with three shapes on each. <h1>Decide which is the odd-one-out on both pages and click on them <h1>When requested, click on where the odd-one-out shape on each page appeared in the correct order</h1>"
+
+    }
+
+
+  function practice_identify(trial) {
+
+    var practice_identify_trial = {
+      type: 'audio-button-response-flexiblelocations',
+      trial_duration: null,
+      response_ends_trial: true,
+      margin_left: ['0px','200px','200px'],
+      stimulus: undefined,
+      prompt: "<h1> Which shape is the odd-one-out?</h1><p style='text-align:center'>",
+      // choices: [imageStart+"0-1-foil"+imageStop, imageStart+"0-1-foil"+imageStop, imageStart+"0-1-target"+imageStop],
+      choices: [imageStart+practice[trial]['left_image']+imageStop, imageStart+practice[trial]['center_image']+imageStop, imageStart+practice[trial]['right_image']+imageStop],
+      set_background:"white-background",
+      data:{condition:"practice",tr_num:practice[trial]['tr_num'],target_side:practice[trial]['target_side'],correct_response:practice[trial]['correct_response']},
+      on_finish: function(data) {
+        data.correct = data.button_pressed == data.correct_response;
+      }
+    }
+    timeline.push(practice_identify_trial)
+  }
+
+
+  function practice_span(trial) {
+
+    qs = []
+
+    for (var j = 1; j <= practice[trial]['length']; j++) {
+      qs.push(
+        {prompt: practice[trial]["prompt"], options: rectangles, labels: practice[trial]['labels'+j.toString()], required: true, horizontal: true}
+      )
+    }
+
+    var practice_span_trial = {
+      type: 'survey-multi-choice',
+      questions: qs,
+      randomize_question_order: false,
+      margin_left:['0px','200px','200px'],
+      button_label: next_button,
+      data:{condition:"practice",tr_num:"1"}
+      };
+
+    timeline.push(practice_span_trial)
+
 
   }
+
+  // var practice_span_trial = {
+  //   type: 'survey-multi-choice',
+  //   questions: [
+  //     {prompt: "<h1 style='font-size:30px; font-weight:normal'>Now click on where the odd-one-out shape appeared on the grid below</h1><p style='text-align:center'>",
+  //     options: rectangles,
+  //     labels: ['foil','foil','target'], required: false, horizontal: true,}
+  //   ],
+  //   randomize_question_order: false,
+  //   margin_left:['0px','200px','200px'],
+  //   button_label: '<img src= "stimuli/images/next-button.jpg" title = "" width="150" height="75">',
+  //   data:{condition:"practice",tr_num:"1"}
+  //   };
+
 
   timeline.push(practice_1_instructions)
-
-  var practice_1_identify = {
-    type: 'audio-button-response-flexiblelocations',
-    trial_duration: null,
-    response_ends_trial: true,
-    margin_left: ['0px','200px','200px'],
-    stimulus: undefined,
-    prompt: "<h1 style='font-size:30px; font-weight:normal'> Which shape is the odd-one-out?</h1>",
-    choices: [imageStart+"0-1-foil"+imageStop, imageStart+"0-1-foil"+imageStop, imageStart+"0-1-target"+imageStop],
-    set_background:"white-background",
-    data:{condition:"practice",tr_num:"1",target_side:"right",correct_response:"2"},
-    on_finish: function(data) {
-      data.correct = data.button_pressed == data.correct_response;
-    }
-  }
-
-  timeline.push(practice_1_identify)
-
-
-  var practice_1_span = {
-    type: 'survey-multi-choice',
-    questions: [
-      {prompt: "<h1 style='font-size:30px; font-weight:normal'>Now click on where the odd-one-out shape appeared on the gride below</h1>",
-      options: rectangles,
-      labels: ['foil','foil','target'], required: false, horizontal: true,}
-    ],
-    randomize_question_order: false,
-    margin_left:['0px','200px','200px'],
-    button_label: '<img src= "stimuli/images/next-button.jpg" title = "" width="150" height="75">',
-    data:{condition:"practice",tr_num:"1"}
-    };
-
-  timeline.push(practice_1_span)
-
-
-  var practice_2_instructions = {
-
-    type: "html-button-response",
-    choices:['<img src= "stimuli/images/next-button.jpg" title = "" width="150" height="75">'],
-    set_background: 'white-background',
-    stimulus: "<p style='font-size:60px; font-weight:bold'> Practice Trials</p><div text-align:left><p><h1 style='font-size:30px; font-weight:normal'> To begin with there are two practice trials to get you used to what you need to do. <h1>On the next page you will see three shapes <h1>Decide which shape is the odd-one-out and click on it <h1>When requested, click on where the odd-one-out appeared in the box</h1></p></div>"
-
-  }
+  practice_identify(0)
+  practice_span(1)
 
   timeline.push(practice_2_instructions)
-
+  practice_identify(2)
+  practice_identify(3)
+  practice_span(4)
 
 
 
@@ -160,7 +208,7 @@ function createTrials(data) {
       var display_instructions = {
         type: "html-button-response",
         // fullscreen_mode: false,
-        choices:['NEXT'],
+        choices:[next_button],
         set_background: 'white-background',
         stimulus: data[i]['text']
       }
@@ -218,7 +266,7 @@ function createTrials(data) {
         questions: qs,
         randomize_question_order: false,
         margin_left:['0px','200px','200px'],
-        button_label: "Next",
+        button_label: next_button,
         data:{condition:data[i]['condition'],tr_num:data[i]["tr_num"]},
         on_finish: function(data) {
           data.all_correct = true;
@@ -227,18 +275,10 @@ function createTrials(data) {
           console.log(cur_trial);
           span_size = data.condition;
           for (var s = -span_size; s < 0; s++) {
-            // past_trial = jsPsych.data.get().filter({trial_index:data.trial_index+s}).json();
             past_trial = jsPsych.data.get().filter({trial_index:data.trial_index+s}).values()[0];
-            console.log(past_trial)
-            // console.log(past_trial.button_pressed)
-            console.log(past_trial['button_pressed'])
             if (past_trial['correct'] == true) {past_choice = past_trial['button_pressed']+"-target"}
             if (past_trial['correct'] == false) {past_choice = past_trial['button_pressed']+"-foil"}
-            console.log(past_choice)
-            console.log(data["responses"])
             var q_num = s + span_size
-            console.log("Q"+q_num)
-            console.log(data["responses"]["Q"+q_num])
             if (past_choice == data["responses"]["Q"+q_num]) {
               span_acc.push("true")
             } else {
@@ -248,6 +288,15 @@ function createTrials(data) {
           }
           data.span_acc = span_acc
           console.log(data)
+
+          if(data["tr_num"]==4) {
+            console.log(data['condition'])
+            var correct_span_trials = jsPsych.data.get().filter({condition:data['condition'],trial_type:"survey-multi-choice",all_correct:true}).count()
+            console.log(correct_span_trials)
+            if (correct_span_trials < 3) {jsPsych.endExperiment("Congratulations! You are all done :)")}
+          }
+
+
         }
       };
 
